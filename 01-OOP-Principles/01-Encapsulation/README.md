@@ -18,7 +18,15 @@
 
 > Make data private. Control access through public methods that enforce your rules.
 
-## Run It
+## Try It Yourself
+
+`practice.cpp` is your working copy of the "before" code. Edit it freely — refactor it to use encapsulation. If you need a fresh start, copy `before_encapsulation.cpp` back over it.
+
+```bash
+g++ -std=c++17 -o practice practice.cpp && ./practice
+```
+
+## Run the Examples
 
 ```bash
 g++ -std=c++17 -o before before_encapsulation.cpp && ./before

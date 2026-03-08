@@ -18,7 +18,15 @@
 
 > Put shared code in a base class. Subclasses inherit the common parts and only add what's different.
 
-## Run It
+## Try It Yourself
+
+`practice.cpp` is your working copy of the "before" code. Edit it freely — refactor it to use inheritance. If you need a fresh start, copy `before_inheritance.cpp` back over it.
+
+```bash
+g++ -std=c++17 -o practice practice.cpp && ./practice
+```
+
+## Run the Examples
 
 ```bash
 g++ -std=c++17 -o before before_inheritance.cpp && ./before

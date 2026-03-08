@@ -18,7 +18,15 @@
 
 > Define what something DOES (interface), not HOW it does it (implementation).
 
-## Run It
+## Try It Yourself
+
+`practice.cpp` is your working copy of the "before" code. Edit it freely — refactor it to use abstraction. If you need a fresh start, copy `before_abstraction.cpp` back over it.
+
+```bash
+g++ -std=c++17 -o practice practice.cpp && ./practice
+```
+
+## Run the Examples
 
 ```bash
 g++ -std=c++17 -o before before_abstraction.cpp && ./before

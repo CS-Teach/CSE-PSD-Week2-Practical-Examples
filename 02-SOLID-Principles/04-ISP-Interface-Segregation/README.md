@@ -15,7 +15,15 @@ The fat interface is split into **role-specific** interfaces:
 
 Each class only implements what it actually needs. Invalid operations are caught at **compile time**, not runtime.
 
-## Run It
+## Try It Yourself
+
+`practice.cpp` is your working copy of the "before" code. Edit it freely — split the fat interface into role-based interfaces. If you need a fresh start, copy `before_isp.cpp` back over it.
+
+```bash
+g++ -std=c++17 -o practice practice.cpp && ./practice
+```
+
+## Run the Examples
 
 ```bash
 g++ -std=c++17 -o before before_isp.cpp && ./before

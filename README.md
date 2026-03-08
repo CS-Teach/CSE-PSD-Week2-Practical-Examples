@@ -10,7 +10,7 @@ Every `.cpp` file is **self-contained** — it compiles and runs on its own:
 g++ -std=c++17 -o program filename.cpp && ./program
 ```
 
-**Examples** come in **before/after pairs**: the "before" shows the problem, the "after" shows the OOP/SOLID solution. Read both and compare!
+**Examples** come in **before/after pairs**: the "before" shows the problem, the "after" shows the OOP/SOLID solution. Read both and compare! Each example also has a **`practice.cpp`** — your working copy. Edit `practice.cpp` freely; if you mess up, just copy the `before_*.cpp` back over it.
 
 **Exercises** have test files — compile and run the tests to check your work:
 

@@ -22,7 +22,15 @@ Responsibilities are split into focused classes:
 
 Each class has **one reason to change**, and changing one doesn't risk breaking the others.
 
-## Run It
+## Try It Yourself
+
+`practice.cpp` is your working copy of the "before" code. Edit it freely — split the monolithic class into separate responsibilities. If you need a fresh start, copy `before_srp.cpp` back over it.
+
+```bash
+g++ -std=c++17 -o practice practice.cpp && ./practice
+```
+
+## Run the Examples
 
 ```bash
 g++ -std=c++17 -o before before_srp.cpp && ./before
