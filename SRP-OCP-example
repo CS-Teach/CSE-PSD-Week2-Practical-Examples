@@ -1,0 +1,84 @@
+
+
+#include "OOPSOLIDsr.h"
+#include <iostream>
+#include <string>
+#include <fstream>
+using namespace std;
+
+// ============================================================
+// VIOLATES SRP:  This class handles data, grading, printing,
+//                file saving, AND assessment type logic
+//
+// VIOLATES OCP:  Adding a new assessment type (e.g. "project")
+//                means editing this class directly
+// ============================================================
+
+class Student {
+public:
+    string name;
+    int grade1, grade2, grade3;
+    string assessmentType;   // "exam", "assignment", or "practical"
+
+    Student(string n, int g1, int g2, int g3, string type)
+        : name(n), grade1(g1), grade2(g2), grade3(g3), assessmentType(type) {}
+
+    // SRP violation: grade logic lives here
+    double calculateAverage() {
+        return (grade1 + grade2 + grade3) / 3.0;
+    }
+
+    // OCP violation: adding "project" means editing this if/else
+    double calculateWeightedScore() {
+        double avg = calculateAverage();
+        if (assessmentType == "exam") {
+            return avg * 1.0;         // no weighting
+        } else if (assessmentType == "assignment") {
+            return avg * 0.8;         // assignments worth 80%
+        } else if (assessmentType == "practical") {
+            return avg * 0.9;         // practicals worth 90%
+        }
+        // want to add "project"? Edit here — risky!
+        return avg;
+    }
+
+    // SRP violation: formatting lives here too
+    string getLetterGrade() {
+        double score = calculateWeightedScore();
+        if      (score >= 90) return "A";
+        else if (score >= 80) return "B";
+        else if (score >= 70) return "C";
+        else                  return "F";
+    }
+
+    // SRP violation: console printing lives here
+    void printReport() {
+        cout << "====== Student Report ======\n";
+        cout << "Name:         " << name                  << "\n";
+        cout << "Assessment:   " << assessmentType         << "\n";
+        cout << "Weighted:     " << calculateWeightedScore() << "\n";
+        cout << "Letter Grade: " << getLetterGrade()        << "\n";
+        cout << "============================\n";
+    }
+
+    // SRP violation: file saving lives here too
+    void saveToFile(const string& filename) {
+        ofstream file(filename);
+        file << name << "," << assessmentType << ","
+             << calculateWeightedScore() << "," << getLetterGrade() << "\n";
+        file.close();
+    }
+};
+
+int main() {
+    Student s1("Alex",  78, 85, 92, "exam");
+    Student s2("Jordan", 70, 75, 80, "assignment");
+
+    s1.printReport();
+    s1.saveToFile("alex.txt");
+
+    s2.printReport();
+    s2.saveToFile("jordan.txt");
+
+    return 0;
+}
