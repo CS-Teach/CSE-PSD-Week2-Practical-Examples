@@ -14,7 +14,15 @@
 
 > Depend on interfaces, not implementations. Inject dependencies from outside rather than creating them inside.
 
-## Run It
+## Try It Yourself
+
+`practice.cpp` is your working copy of the "before" code. Edit it freely — inject the dependency through an abstraction. If you need a fresh start, copy `before_dip.cpp` back over it.
+
+```bash
+g++ -std=c++17 -o practice practice.cpp && ./practice
+```
+
+## Run the Examples
 
 ```bash
 g++ -std=c++17 -o before before_dip.cpp && ./before

@@ -10,7 +10,15 @@ Adding a new assessment type (e.g. "project") requires **editing** the existing 
 ### `after_ocp.cpp` — The Solution
 Each assessment type is a **separate strategy class**. Adding "Project" means creating `ProjectStrategy` — no existing code is modified. The system is extended without touching what already works.
 
-## Run It
+## Try It Yourself
+
+`practice.cpp` is your working copy of the "before" code. Edit it freely — refactor to use polymorphic strategies. If you need a fresh start, copy `before_ocp.cpp` back over it.
+
+```bash
+g++ -std=c++17 -o practice practice.cpp && ./practice
+```
+
+## Run the Examples
 
 ```bash
 g++ -std=c++17 -o before before_ocp.cpp && ./before

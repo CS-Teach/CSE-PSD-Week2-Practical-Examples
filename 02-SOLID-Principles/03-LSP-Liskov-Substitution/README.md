@@ -14,7 +14,15 @@
 
 > If substituting a subclass breaks expectations, the inheritance relationship is wrong. Prefer composition or sibling hierarchies.
 
-## Run It
+## Try It Yourself
+
+`practice.cpp` is your working copy of the "before" code. Edit it freely — fix the inheritance hierarchy. If you need a fresh start, copy `before_lsp.cpp` back over it.
+
+```bash
+g++ -std=c++17 -o practice practice.cpp && ./practice
+```
+
+## Run the Examples
 
 ```bash
 g++ -std=c++17 -o before before_lsp.cpp && ./before
