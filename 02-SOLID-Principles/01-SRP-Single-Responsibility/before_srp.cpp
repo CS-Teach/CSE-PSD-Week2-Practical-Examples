@@ -1,18 +1,21 @@
+// ============================================================
+// BEFORE Single Responsibility Principle (SRP)
+// ============================================================
+// Problem:  The Student class has MULTIPLE responsibilities:
+//           - Storing student data
+//           - Calculating grades
+//           - Formatting/printing reports
+//           - Saving to files
+//
+//           If ANY of these change (new grading scheme, new
+//           report format, different file format), we must
+//           edit this one class — risky and messy.
+// ============================================================
 
-
-#include "OOPSOLIDsr.h"
 #include <iostream>
 #include <string>
 #include <fstream>
 using namespace std;
-
-// ============================================================
-// VIOLATES SRP:  This class handles data, grading, printing,
-//                file saving, AND assessment type logic
-//
-// VIOLATES OCP:  Adding a new assessment type (e.g. "project")
-//                means editing this class directly
-// ============================================================
 
 class Student {
 public:
@@ -23,26 +26,25 @@ public:
     Student(string n, int g1, int g2, int g3, string type)
         : name(n), grade1(g1), grade2(g2), grade3(g3), assessmentType(type) {}
 
-    // SRP violation: grade logic lives here
+    // Responsibility 1: Grade calculation
     double calculateAverage() {
         return (grade1 + grade2 + grade3) / 3.0;
     }
 
-    // OCP violation: adding "project" means editing this if/else
+    // Responsibility 2: Weighted score logic
     double calculateWeightedScore() {
         double avg = calculateAverage();
         if (assessmentType == "exam") {
-            return avg * 1.0;         // no weighting
+            return avg * 1.0;
         } else if (assessmentType == "assignment") {
-            return avg * 0.8;         // assignments worth 80%
+            return avg * 0.8;
         } else if (assessmentType == "practical") {
-            return avg * 0.9;         // practicals worth 90%
+            return avg * 0.9;
         }
-        // want to add "project"? Edit here — risky!
         return avg;
     }
 
-    // SRP violation: formatting lives here too
+    // Responsibility 3: Letter grade determination
     string getLetterGrade() {
         double score = calculateWeightedScore();
         if      (score >= 90) return "A";
@@ -51,17 +53,18 @@ public:
         else                  return "F";
     }
 
-    // SRP violation: console printing lives here
+    // Responsibility 4: Console output formatting
     void printReport() {
         cout << "====== Student Report ======\n";
-        cout << "Name:         " << name                  << "\n";
-        cout << "Assessment:   " << assessmentType         << "\n";
+        cout << "Name:         " << name << "\n";
+        cout << "Assessment:   " << assessmentType << "\n";
+        cout << "Average:      " << calculateAverage() << "\n";
         cout << "Weighted:     " << calculateWeightedScore() << "\n";
-        cout << "Letter Grade: " << getLetterGrade()        << "\n";
+        cout << "Letter Grade: " << getLetterGrade() << "\n";
         cout << "============================\n";
     }
 
-    // SRP violation: file saving lives here too
+    // Responsibility 5: File I/O
     void saveToFile(const string& filename) {
         ofstream file(filename);
         file << name << "," << assessmentType << ","
@@ -71,14 +74,20 @@ public:
 };
 
 int main() {
-    Student s1("Alex",  78, 85, 92, "exam");
+    cout << "=== Before SRP ===\n\n";
+
+    Student s1("Alex",   78, 85, 92, "exam");
     Student s2("Jordan", 70, 75, 80, "assignment");
 
     s1.printReport();
-    s1.saveToFile("alex.txt");
-
+    cout << "\n";
     s2.printReport();
-    s2.saveToFile("jordan.txt");
+
+    // s1.saveToFile("alex.txt");  // Also does file I/O!
+
+    // Problem: Want to change the report format?
+    //          You're editing the same class that holds data
+    //          and calculates grades. Risk of breaking everything.
 
     return 0;
 }
