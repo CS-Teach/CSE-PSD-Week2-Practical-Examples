@@ -7,7 +7,7 @@
 // failure showing exactly what went wrong.
 // ============================================================
 
-#include "exercise.cpp"  // Change to "solution.cpp" to verify solution
+#include "practice.cpp"  // Students edit practice.cpp — exercise.cpp is the clean reference
 #include <cassert>
 #include <iostream>
 using namespace std;

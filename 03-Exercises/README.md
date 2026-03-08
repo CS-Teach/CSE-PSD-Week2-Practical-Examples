@@ -2,13 +2,14 @@
 
 Practice implementing OOP and SOLID principles. Each exercise has:
 
-- **`exercise.cpp`** — A skeleton or broken code for you to fix
+- **`exercise.cpp`** — The instructions and skeleton (reference — don't edit)
+- **`practice.cpp`** — Your working copy (edit this!)
 - **`tests.cpp`** — Assert-based tests that verify your implementation
 
 ## How to Work
 
 1. Read the instructions in `exercise.cpp`
-2. Implement your solution in `exercise.cpp`
+2. Implement your solution in `practice.cpp`
 3. Compile and run the tests:
 
 ```bash

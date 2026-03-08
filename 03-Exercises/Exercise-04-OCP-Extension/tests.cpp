@@ -4,7 +4,7 @@
 // Compile:  g++ -std=c++17 -o test tests.cpp && ./test
 // ============================================================
 
-#include "exercise.cpp"  // Change to "solution.cpp" to verify solution
+#include "practice.cpp"  // Students edit practice.cpp — exercise.cpp is the clean reference
 #include <cassert>
 #include <iostream>
 #include <cmath>
